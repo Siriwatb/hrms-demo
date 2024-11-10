@@ -11,9 +11,20 @@ This project is a demo for a .NET 8 API. It is designed to practice Clean Archit
 
 ## Overview
 
-This project is for managing employee data. Below is an image that provides an overview of the system:
+This project is for managing employee data below.
 
-![System Overview](files/image.png)
+| EMPNO | FIRST_NAME | LAST_NAME  | DESIGNATION         | HIREDATE    | SALARY | COMM | DEPTNO |
+|-------|------------|------------|---------------------|-------------|--------|------|--------|
+| 1001  | STEFAN     | SALVATORE  | BUSINESS ANALYST    | 17-NOV-97   | 50000  | -    | 40     |
+| 1002  | DIANA      | LORRENCE   | TECHNICAL ARCHITECT | 01-MAY-00   | 70000  | -    | 10     |
+| 1003  | JAMES      | MADISON    | MANAGER             | 19-JUN-88   | 80400  | -    | 40     |
+| 1005  | LUCY       | GELLER     | HR ASSOCIATE        | 13-JUL-08   | 35000  | 200  | 30     |
+| 1006  | ISAAC      | STEFAN     | TRAINEE             | 13-DEC-15   | 20000  | -    | 40     |
+| 1007  | JOHN       | SMITH      | CLERK               | 17-DEC-05   | 12000  | -    | 10     |
+| 1008  | NANCY      | GILBERT    | SALESMAN            | 20-FEB-81   | 1600  | 300 | 10     |
+| 1004  | JONES      | NICK       | HR ANALYST          | 02-JAN-03   | 47000  | -    | 30     |
+
+
 
 
 ## Getting Started
