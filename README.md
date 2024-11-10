@@ -13,7 +13,7 @@ This project is a demo for a .NET 8 API. It is designed to practice Clean Archit
 
 This project is for managing employee data. Below is an image that provides an overview of the system:
 
-![System Overview](https://github.com/Siriwatb/hrms-demo/blob/main/image.jpg?raw=true)
+![System Overview](files/image.png)
 
 
 ## Getting Started
