@@ -1,3 +1,14 @@
+using AutoMapper;
+
+using HRMS.Application.Services.Employees.Commands.AddEmployee;
+using HRMS.Application.Services.Employees.Commands.DeleteEmployee;
+using HRMS.Application.Services.Employees.Commands.UpdateEmployee;
+using HRMS.Application.Services.Employees.Queries.FindAllEmployee;
+using HRMS.Application.Services.Employees.Queries.FindOneByEmpNo;
+using HRMS.Contracts.Employees;
+
+using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRMS.API.Controllers;
@@ -6,21 +17,67 @@ namespace HRMS.API.Controllers;
 [Route("api/[controller]")]
 public class EmployeesController : ControllerBase
 {
+    private readonly IMediator _mediator;
+    private readonly IMapper _mapper;
+
+    public EmployeesController(IMediator mediator, IMapper mapper)
+    {
+        _mediator = mediator;
+        _mapper = mapper;
+    }
+
     [HttpGet]
-    public IActionResult GetEmployees()
+    [ProducesResponseType(typeof(IEnumerable<EmployeeResponse>), 200)]
+    public async Task<IActionResult> GetEmployees()
     {
-        return Ok();
+        var query = new FindAllQuery();
+        var employees = await _mediator.Send(query);
+
+        var response = employees.Select(e => _mapper.Map<EmployeeResponse>(e));
+
+        return Ok(response);
     }
-    
+
     [HttpGet("{empNo}")]
-    public IActionResult GetEmployeeByEmpNo(string empNo)
+    [ProducesResponseType(typeof(EmployeeResponse), 200)]
+    public async Task<IActionResult> GetEmployeeByEmpNo(string empNo)
     {
-        return Ok();
+        var query = new FindOneByEmpNoQuery(empNo);
+        var employee = await _mediator.Send(query);
+        var response = _mapper.Map<EmployeeResponse>(employee);
+        return Ok(response);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(EmployeeResponse), 201)]
+    public async Task<IActionResult> AddEmployee(AddEmployeeRequest request)
+    {
+        var command = _mapper.Map<AddEmployeeCommand>(request);
+
+        var result = await _mediator.Send(command);
+
+        var response = _mapper.Map<EmployeeResponse>(result);
+
+        return Created("", response);
+    }
+
+    [HttpPut("{empNo}")]
+    [ProducesResponseType( 204)]
+    public async Task<IActionResult> UpdateEmployee(string empNo , [FromBody]UpdateEmployeeRequest request)
+    {
+        var command = _mapper.Map<UpdateEmployeeCommand>(request);
+        command = command with { EmpNo = empNo };
+        await _mediator.Send(command);
+
+        return NoContent();
     }
     
-    [HttpPost]
-    public IActionResult AddEmployee(string empNo, string firstName, string lastName, string designation, DateTime hireDate, Decimal salary, Decimal comm, string deptNo)
+    [HttpDelete("{empNo}")]
+    [ProducesResponseType(204)]
+    public async Task<IActionResult> DeleteEmployee(string empNo)
     {
-        return Created();
+        var command = new DeleteEmployeeCommand(empNo);
+        await _mediator.Send(command);
+        return NoContent();
     }
 }

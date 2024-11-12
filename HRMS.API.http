@@ -1,0 +1,9 @@
+@HRMS.API_HostAddress = https://localhost:7126
+
+GET {{HRMS.API_HostAddress}}/api/Employees/
+Accept: application/json
+
+###
+
+GET {{HRMS.API_HostAddress}}/api/Employees/test
+Accept: application/json
