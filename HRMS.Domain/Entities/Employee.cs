@@ -1,4 +1,4 @@
-namespace HRMS.Domain;
+namespace HRMS.Domain.Entities;
 
 public class Employee
 {
@@ -10,4 +10,4 @@ public class Employee
     public Decimal Salary { get; set; }
     public Decimal Comm { get; set; }
     public string DeptNo { get; set; }= null!;
-}
+} 
