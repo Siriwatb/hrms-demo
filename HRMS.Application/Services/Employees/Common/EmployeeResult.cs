@@ -1,4 +1,4 @@
-namespace HRMS.Application.Services.Employee;
+namespace HRMS.Application.Services.Employees.Common;
 
 public record EmployeeResult(
     string EmpNo,
