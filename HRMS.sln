@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS.Application", "HRMS.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS.Contracts", "HRMS.Contracts\HRMS.Contracts.csproj", "{0203CA72-014D-4794-B939-E3DDDD19FE1A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Request", "Request", "{D7AC8918-BC7F-45BB-A6FC-014D5EE4075F}"
+	ProjectSection(SolutionItems) = preProject
+		HRMS.API.http = HRMS.API.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
